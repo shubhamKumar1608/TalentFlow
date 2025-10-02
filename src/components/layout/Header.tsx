@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../ui/Logo";
 import { Button } from "../ui/Button";
-import ThemeToggle from "../ui/ThemeToggle";
 import { NAV_LINKS } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 
@@ -52,7 +51,6 @@ const Header: React.FC = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            {/* <ThemeToggle /> */}
             <Button
               variant="outline"
               size="sm"
@@ -116,7 +114,6 @@ const Header: React.FC = () => {
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
                 <div className="flex items-center justify-center">
-                  {/* <ThemeToggle /> */}
                 </div>
                 <Button
                   variant="outline"
