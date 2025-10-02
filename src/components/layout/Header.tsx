@@ -116,7 +116,7 @@ const Header: React.FC = () => {
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
                 <div className="flex items-center justify-center">
-                  <ThemeToggle />
+                  {/* <ThemeToggle /> */}
                 </div>
                 <Button
                   variant="outline"
