@@ -181,17 +181,17 @@ const Jobs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex sm:flex-row flex-col sm:gap-0 gap-4 justify-between items-center">
-            <div>
-              <h1 className="text-4xl font-bold text-slate-900 mb-2">Job Management</h1>
-              <p className="text-slate-600 text-lg">
+          <div className="flex flex-col sm:flex-row sm:gap-0 gap-4 justify-between items-center w-full">
+            <div className="w-full sm:w-auto">
+              <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">Job Management</h1>
+              <p className="text-slate-600 text-base sm:text-lg">
                 Create and manage your job postings with ease
               </p>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-3 sm:gap-3 items-stretch sm:items-center">
               <button
                 onClick={() => navigate("/dashboard/candidates")}
-                className="group bg-white/80 backdrop-blur-sm border border-slate-300 text-slate-700 px-6 py-3 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:scale-105"
+                className="group bg-white/80 backdrop-blur-sm border border-slate-300 text-slate-700 px-6 py-3 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 w-full sm:w-auto"
               >
                 <svg
                   className="w-5 h-5 group-hover:text-blue-600 transition-colors"
@@ -210,7 +210,7 @@ const Jobs: React.FC = () => {
               </button>
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="group gradient-primary text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 transform hover:scale-105"
+                className="group gradient-primary text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 w-full sm:w-auto"
               >
                 <svg
                   className="w-5 h-5"
@@ -232,9 +232,9 @@ const Jobs: React.FC = () => {
         </div>
 
         {/* Filters */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50 p-6 mb-6">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50 p-4 sm:p-6 mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="flex-1 w-full">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +250,7 @@ const Jobs: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="sm:w-48">
+            <div className="w-full sm:w-48">
               <select
                 value={statusFilter}
                 onChange={(e) => handleStatusFilter(e.target.value)}
@@ -302,7 +302,7 @@ const Jobs: React.FC = () => {
             </div>
           ) : (
           <>
-            <div className="p-6 space-y-4">
+            <div className="p-0 sm:p-6 flex flex-col gap-4">
               {jobs.map((job, index) => (
                 <div
                   key={job.id}
@@ -310,12 +310,12 @@ const Jobs: React.FC = () => {
                   onDragStart={(e) => handleDragStart(e, job)}
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, index)}
-                  className={`group bg-white/60 backdrop-blur-sm rounded-2xl border border-slate-200/50 p-6 hover:bg-white/80 hover:shadow-lg transition-all duration-300 cursor-move transform hover:scale-[1.02] ${
+                  className={`group bg-white/60 backdrop-blur-sm rounded-2xl border border-slate-200/50 p-4 sm:p-6 hover:bg-white/80 hover:shadow-lg transition-all duration-300 cursor-move transform hover:scale-[1.02] ${
                     draggedJob?.id === job.id ? "opacity-50 scale-95" : ""
                   }`}
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-4 flex-1">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-0">
+                    <div className="flex flex-col sm:flex-row items-start gap-4 flex-1">
                       <div className="text-slate-400 cursor-move group-hover:text-slate-600 transition-colors mt-1">
                         <svg
                           className="w-5 h-5"
@@ -326,8 +326,8 @@ const Jobs: React.FC = () => {
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-3">
-                          <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3">
+                          <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                             {job.title}
                           </h3>
                           <span
@@ -340,14 +340,16 @@ const Jobs: React.FC = () => {
                             {job.status}
                           </span>
                         </div>
-                        <div className="flex items-center space-x-2 mb-3">
-                          <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          <span className="text-sm font-medium text-slate-600">
-                            {job.location}
-                          </span>
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-3">
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span className="text-sm font-medium text-slate-600">
+                              {job.location}
+                            </span>
+                          </div>
                         </div>
                         <p className="text-sm text-slate-600 mb-4 leading-relaxed">
                           {job.description.substring(0, 200)}...
@@ -364,14 +366,14 @@ const Jobs: React.FC = () => {
                         </div>
 
                         {/* Applications Count */}
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-2 text-sm text-slate-600">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+                          <div className="flex items-center gap-2 text-sm text-slate-600">
                             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                             <span className="font-medium">
                               {getApplicationsForJob(job.id).length} applications
                             </span>
                           </div>
-                          <div className="flex items-center space-x-2 text-sm text-slate-500">
+                          <div className="flex items-center gap-2 text-sm text-slate-500">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -380,24 +382,24 @@ const Jobs: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col space-y-2 ml-6">
+                    <div className="flex flex-row md:flex-col gap-2 md:ml-6 w-full md:w-auto">
                       <button
                         onClick={() =>
                           navigate(`/dashboard/candidates?job=${job.id}`)
                         }
-                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium w-full md:w-auto"
                       >
                         View Candidates
                       </button>
                       <button
                         onClick={() => setEditingJob(job)}
-                        className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors text-sm font-medium w-full md:w-auto"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleArchive(job)}
-                        className="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors text-sm font-medium w-full md:w-auto"
                       >
                         {job.status === "active" ? "Archive" : "Unarchive"}
                       </button>
@@ -406,7 +408,7 @@ const Jobs: React.FC = () => {
                           setShowDeleteModal(true);
                           setJobToDelete(job);
                         }}
-                        className="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-sm font-medium"
+                        className="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-sm font-medium w-full md:w-auto"
                       >
                         Delete
                       </button>

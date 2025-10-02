@@ -320,7 +320,7 @@ const HrDashboard = () => {
               View all →
             </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             <div
               onClick={() => navigate("/dashboard/candidates")}
               className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50 p-6 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105"
