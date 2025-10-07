@@ -54,6 +54,7 @@ const Header: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
+              onClick={() => navigate("/hr-login")}
               className="border-slate-300 text-slate-700 hover:bg-slate-50 transition-all duration-200"
             >
               Sign In
